@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0"><!--为了移动端而做准备-->
+    <title>Register or Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .header-carousel-item {
+            height: 375px;
+        }
+
+        .bg-cover {
+            background-size: cover;
+            background-position: center center;
+        }
+    </style>
+</head>
+</head>
+<body>
+
+<nav class="ui inverted attached segment m-padded-tb-mini"> <!--inverted 使得 底色变黑 ，反色 attach 没有圆角 附着圆滑-->
+    <!--里面 m-padded-tb-mini 让nav bar的宽度小一点 全是配合那个css me 自己加的-->
+    <div class="ui container"><!---解决第一个logo太靠左边界的问题-->
+        <div class="ui  inverted  secondary menu">
+            <h2 class="ui orange header item">Anime</h2> <!--加了item 才能加下面的分栏目-->
+            <a href="#" class="item"><i class="home icon"></i>Homepage</a>
+
+            <div class="right item">
+                <div class="ui icon input"> <!--这里不加 icon 你的 icon 就出不来-->
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i> <!--加 link 使得 你把鼠标放到哪个放大镜上 会变成手（像一个链接一样）-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="m-container-small">
+    <div class="ui container">
+        <div class="ui segment m-margin-top">
+            <div class="ui grid">
+                <div class="fifthteen wide column">
+                     <h3>Welcome</h3>
+                    <form class="ui form" action='/signin' method='post'>
+                        <div class="field">
+                            <label>Username</label>
+                            <input type="text" name="username" placeholder="User Name">
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <input type="text" name="password" placeholder="Password">
+                        </div>
+                        <div >
+                            <button class="ui teal button  m-margin-left m-inline-block" type="submit" name="loginbutton" value="login">Login</button>
+                            <button class="ui orange button  m-inline-block" type="submit" name="registerbutton" value="register" formaction="/register">Register</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="m-container">
+    <div class="ui container">
+        <div class="ui vertical attached segment m-margin-top m-margin-bot" style = "padding-bottom:0px; padding-top:0px;">
+            <carousel>
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                        <li data-target="#carouselExampleIndicators2" data-slide-to="1"></li>
+                        <li data-target="#carouselExampleIndicators2" data-slide-to="2"></li>
+                    </ol>
+
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item header-carousel-item bg-cover active"
+                             style="background-image:url(./static/image/anime2.jpg)">
+                            <div class="carousel-caption d-none d-md-block carousel-background">
+                                <!--现在我们加字母注意出现的位置，他是出现在第一个图的这个 div 里面-->
+                                <!--此外 d-none 指的是一开始是看不见的， 然后 md 的时候出现-->
+                            </div>
+                        </div>
+
+
+                        <div class="carousel-item header-carousel-item bg-cover"
+                             style="background-image:url(./static/image/anime9.jpg)">
+
+                        </div>
+                        <div class="carousel-item header-carousel-item bg-cover"
+                             style="background-image:url(./static/image/anime7.jpg)">
+
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </carousel>
+        </div>
+    </div>
+</div>
+
+
+<footer class="ui inverted vertical segment m-padded-tb-mid">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://media.giphy.com/media/5ArXi4OrKgfSM/giphy.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://pa1.narvii.com/5828/f036dc936d64ecd9e6dac043824292622aeb700d_hq.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://i.imgur.com/iSMhUIh.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://www.vstou.com/upload/image/1/201608/1470721863551355.jpg" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider ">
+            <p>
+            <div class="copyright m-text-thin m-text-spaced m-opacity-mini">
+                Copyright @ 2018-2019 Adaptive System Design Designed by Group Pokemon
+            </div>
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<!--一个jquery 是从jsDeliver这个网站中引入的-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script>
+</body>
+</html>

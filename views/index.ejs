@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0"><!--为了移动端而做准备-->
+    <title>Anime Recommendation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        .header-carousel-item {
+            height: 400px;
+        }
+
+        .bg-cover {
+            background-size: contain;
+            background-position: center center;
+            /* background-repeat:no-repeat; */
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+<nav class="ui inverted attached segment m-padded-tb-mini m-container"> <!--inverted 使得 底色变黑 ，反色 attach 没有圆角 附着圆滑-->
+    <!--里面 m-padded-tb-mini 让nav bar的宽度小一点 全是配合那个css me 自己加的-->
+    <div class="ui container"><!---解决第一个logo太靠左边界的问题-->
+        <div class="ui  inverted  secondary menu">
+            <h2 class="ui orange header item">Anime</h2> <!--加了item 才能加下面的分栏目-->
+            <a href="/itemcf" class="item"><i class="home icon"></i>Homepage</a>
+
+
+            <div class="right item">
+                <div class="ui icon input"> <!--这里不加 icon 你的 icon 就出不来-->
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i> <!--加 link 使得 你把鼠标放到哪个放大镜上 会变成手（像一个链接一样）-->
+                </div>
+                <div class="item m-margin">
+                    <a href="/user/<%=user.uid%>"><%=user.username%>'s Profile</a>
+                </div>
+                <div class="item m-margin">
+                    <a href="/signout">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class = "m-container">
+    <div class="ui container">
+        <div class="ui  inverted vertical top attached segment m-margin-top " style = "padding-bottom:0px; padding-top:0px;">
+            <nav>
+                <div class="ui  fluid secondary menu m-thin m-margin-tb-no">
+                    <h2 class="ui orange header item">Trending now</h2>
+                    <div class="ui floating dropdown labeled icon button m-margin">
+                        <i class="filter icon"></i>
+                        <span class="text">Genres</span>
+                        <div class="menu">
+                            <div class="ui icon search input">
+                                <i class="search icon"></i>
+                                <input type="text" placeholder="Search genres...">
+                            </div>
+                            <div class="divider"></div>
+                            <div class="header">
+                                <i class="tags icon"></i>
+                                Label
+                            </div>
+                            <div class="scrolling menu">
+                              <div class="item">
+                                  <div class="ui red empty circular label"></div>
+                                  <span class="filterclick genreclick">default</span>
+                              </div>
+                                <div class="item">
+                                    <div class="ui red empty circular label"></div>
+                                    <span class="filterclick genreclick">Comedy</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui blue empty circular label"></div>
+                                    <span class="filterclick genreclick">Action</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui black empty circular label"></div>
+                                    <span class="filterclick genreclick">Adventure</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui purple empty circular label"></div>
+                                    <span class="filterclick genreclick">Fantasy</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui orange empty circular label"></div>
+                                    <span class="filterclick genreclick">Supernatural</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui empty circular label"></div>
+                                    <span class="filterclick genreclick">Drama</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui yellow empty circular label"></div>
+                                    <span class="filterclick genreclick">Shounen</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui pink empty circular label"></div>
+                                    <span class="filterclick genreclick">Kids</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui green empty circular label"></div>
+                                    <span class="filterclick genreclick">Romance</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui green empty circular label"></div>
+                                    <span class="filterclick genreclick">School</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui floating dropdown labeled icon button m-margin">
+                        <i class="filter icon"></i>
+                        <span class="text">Length</span>
+                        <div class="menu">
+                            <div class="ui icon search input">
+                                <i class="search icon"></i>
+                                <input type="text" placeholder="Search length...">
+                            </div>
+                            <div class="divider"></div>
+                            <div class="header">
+                                <i class="tags icon"></i>
+                                Label
+                            </div>
+                            <div class="scrolling menu">
+                              <div class="item">
+                                  <div class="ui red empty circular label"></div>
+                                  <span class="filterclick lengthclick">default</span>
+                              </div>
+                                <div class="item">
+                                  <div class="ui red empty circular label"></div>
+                                    <span class="filterclick lengthclick">short</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui blue empty circular label"></div>
+                                    <span class="filterclick lengthclick">mid</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui black empty circular label"></div>
+                                      <span class="filterclick lengthclick">long</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ui floating dropdown labeled icon button m-margin">
+                        <i class="filter icon"></i>
+                        <span class="text">Type</span>
+                        <div class="menu">
+                            <div class="ui icon search input">
+                                <i class="search icon"></i>
+                                <input type="text" placeholder="Search types...">
+                            </div>
+                            <div class="divider"></div>
+                            <div class="header">
+                                <i class="tags icon"></i>
+                                Label
+                            </div>
+                            <div class="scrolling menu">
+                              <div class="item">
+                                  <div class="ui red empty circular label"></div>
+                                  <span class="filterclick typeclick">default</span>
+                              </div>
+                                <div class="item">
+                                    <div class="ui red empty circular label"></div>
+                                    <span class="filterclick typeclick">Movie</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui blue empty circular label"></div>
+                                    <span class="filterclick typeclick">Music</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui black empty circular label"></div>
+                                    <span class="filterclick typeclick">ONA</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui purple empty circular label"></div>
+                                    <span class="filterclick typeclick">OVA</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui orange empty circular label"></div>
+                                    <span class="filterclick typeclick">Special</span>
+                                </div>
+                                <div class="item">
+                                    <div class="ui empty circular label"></div>
+                                    <span class="filterclick typeclick">TV</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="ui  vertical attached segment" style = "padding-bottom:0px; padding-top:0px;">
+            <carousel>
+                <div id="carouselExampleIndicators1" class="carousel " data-ride="carousel">
+                    <ol class="carousel-indicators indexfilter">
+
+                        <li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>
+                        <% for (let [index, val] of trending.slice(1).entries()) { index= index+1 %>
+                        <li data-target="#carouselExampleIndicators2" data-slide-to="<%=index%>"></li>
+                        <% } %>
+                    </ol>
+
+
+                    <div class="carousel-inner trend">
+                        <div class="carousel-item header-carousel-item bg-cover active"
+                             style="background-image:url(<%=trending[0].image%>)">
+                            <div class="carousel-caption d-none d-md-block carousel-background">
+                                  <a href="/anime/<%=trending[0].aid%>"><h5><%=trending[0].name%></h5></a>
+                            </div>
+                        </div>
+
+                        <% trending.slice(1).forEach( anime=>{ %>
+                        <div class="carousel-item header-carousel-item bg-cover"
+                             style="background-image:url(<%=anime.image%>)">
+                             <div class="carousel-caption d-none d-md-block carousel-background">
+                                 <a href="/anime/<%=anime.aid%>"><h5><%=anime.name%></h5></a>
+                             </div>
+                        </div>
+                        <% }); %>
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </carousel>
+        </div>
+
+
+
+
+        <% if (genre=='') {} else{ %>
+        <div class="ui  inverted vertical attached segment m-margin-top">
+            <h2 class="ui orange header item m-padded-left-small">Recommendation 1 --- Based on Genres</h2>
+        </div>
+        <div class="ui  vertical  attached segment " style = "padding-bottom:0px; padding-top:0px;">
+            <carousel>
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators2" data-slide-to="0" class="active"></li>
+                        <% for (let [index, val] of genre.slice(1).entries()) { index= index+1 %>
+                        <li data-target="#carouselExampleIndicators2" data-slide-to="<%=index%>"></li>
+                        <% } %>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item header-carousel-item bg-cover active"
+                             style="background-image:url(<%=genre[0].image%>)">
+                            <div class="carousel-caption d-none d-md-block carousel-background">
+                                <!--现在我们加字母注意出现的位置，他是出现在第一个图的这个 div 里面-->
+                                <!--此外 d-none 指的是一开始是看不见的， 然后 md 的时候出现-->
+                                <a href="/anime/<%=genre[0].aid%>"><h5><%=genre[0].name%></h5></a>
+                            </div>
+                        </div>
+
+                        <% genre.slice(1).forEach( anime=>{ %>
+                        <div class="carousel-item header-carousel-item bg-cover"
+                             style="background-image:url(<%=anime.image%>)">
+                             <div class="carousel-caption d-none d-md-block carousel-background">
+                                 <a href="/anime/<%=anime.aid%>"><h5><%=anime.name%></h5></a>
+                             </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </carousel>
+        </div>
+        <% } %>
+
+
+        <% if (cf=='') {} else{ %>
+        <div class="ui  inverted vertical attached segment m-margin-top " >
+            <h2 class="ui orange header item m-padded-left-small">Recommendation 2 --- Based on Rating (Item CF)</h2>
+        </div>
+        <div class="ui  vertical bot attached segment m-margin-bot" style = "padding-bottom:0px; padding-top:0px;">
+            <carousel>
+                <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
+                        <% for (let [index, val] of cf.slice(1).entries()) { index= index+1 %>
+                        <li data-target="#carouselExampleIndicators3" data-slide-to="<%=index%>"></li>
+                        <% } %>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item header-carousel-item bg-cover active"
+                             style="background-image:url(<%=cf[0].image%>)">
+                            <div class="carousel-caption d-none d-md-block carousel-background">
+                                <!--现在我们加字母注意出现的位置，他是出现在第一个图的这个 div 里面-->
+                                <!--此外 d-none 指的是一开始是看不见的， 然后 md 的时候出现-->
+                                <a href="/anime/<%=cf[0].aid%>"><h5><%=cf[0].name%></h5></a>
+                            </div>
+                        </div>
+
+                        <% cf.slice(1).forEach( cfanime=>{ %>
+                        <div class="carousel-item header-carousel-item bg-cover"
+                             style="background-image:url(<%=cfanime.image%>)">
+                             <div class="carousel-caption d-none d-md-block carousel-background">
+                                 <a href="/anime/<%=cfanime.aid%>"><h5><%=cfanime.name%></h5></a>
+                             </div>
+                        </div>
+                        <% }); %>
+
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </carousel>
+        </div>
+        <% } %>
+
+
+    </div>
+</div>
+
+
+
+<footer class="ui inverted vertical segment m-padded-tb-mid">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://media.giphy.com/media/5ArXi4OrKgfSM/giphy.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://pa1.narvii.com/5828/f036dc936d64ecd9e6dac043824292622aeb700d_hq.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://i.imgur.com/iSMhUIh.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://www.vstou.com/upload/image/1/201608/1470721863551355.jpg" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider ">
+            <p>
+            <div class="copyright m-text-thin m-text-spaced m-opacity-mini">
+                Copyright @ 2018-2019 Adaptive System Design Designed by Group Pokemon
+            </div>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<!--一个jquery 是从jsDeliver这个网站中引入的-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script>
+<script>
+
+  var length = '';
+  var type = '';
+  var genre = '';
+  var option = document.querySelectorAll('.filterclick');
+  option.forEach( val=>{
+    val.parentNode.addEventListener('click', e=>{
+
+      console.log(val.textContent);
+      if (val.classList.contains('lengthclick')){
+
+        if (val.textContent == 'default'){
+          length = '';
+
+        }else{
+          length = val.textContent;
+        }
+
+      }
+      if (val.classList.contains('typeclick')){
+        if (val.textContent == 'default'){
+          type = '';
+        }else{
+          type = val.textContent;
+        }
+      }
+      if (val.classList.contains('genreclick')){
+        if (val.textContent == 'default'){
+          genre = '';
+        }else{
+          genre = val.textContent;
+        }
+
+      }
+
+      updateAnime(length,type,genre);
+
+    });
+
+  });
+
+
+  function updateAnime(l,t,g){
+    // to check element's duration is match with
+
+    var animes = <%- JSON.stringify(trending) %>;
+    console.log(animes);
+    //first filter length
+    if (l!==''){
+      animes = animes.reduce( (acc,val)=>{
+        if (val.duration == l){
+          console.log('-');
+          acc.push(val);
+        }
+        return acc;
+
+      },[]);
+
+    }
+    if (t!==''){
+      //then filter types
+      animes = animes.reduce( (acc,val)=>{
+        if (val.type == t){
+          acc.push(val);
+        }
+        return acc;
+      },[]);
+    }
+    if (g!==''){
+      animes = animes.reduce( (acc,val)=>{
+        let genrelist = val.genre.split(',');
+        //trim
+        genrelist = genrelist.map( val=>{
+          return val.trim();
+        });
+        if (genrelist.includes(g)){
+          acc.push(val);
+        }
+        return acc;
+      },[]);
+    }
+
+    // console.log(animes);
+
+    //insert the index button
+    var indexNode = document.querySelector('.indexfilter');
+    if (animes.length == 0){
+      indexNode.innerHTML = '<li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>';
+    }else{
+      indexNode.innerHTML = '<li data-target="#carouselExampleIndicators1" data-slide-to="0" class="active"></li>';
+      for (let [index, val] of animes.slice(1).entries()) {
+        index= index+1;
+        indexNode.innerHTML += '<li data-target="#carouselExampleIndicators2" data-slide-to="'+index+'"></li>';
+      }
+    }
+
+    var enterNode = document.querySelector('.trend');
+    if (animes.length == 0){
+      enterNode.innerHTML = '<div class="carousel-item header-carousel-item bg-cover active" style="background-image:url(http://www.afriplatform.com/image/sorry.png)">'
+    }else{
+
+      enterNode.innerHTML = '<div class="carousel-item header-carousel-item bg-cover active" style="background-image:url('+animes[0].image+')">'+
+      '<div class="carousel-caption d-none d-md-block carousel-background">'+
+      '<a href="/anime/'+animes[0].aid+'"><h5>'+animes[0].name+'</h5></a>'+
+      '</div></div>';
+
+      animes.slice(1).forEach( anime=>{
+        enterNode.innerHTML += '<div class="carousel-item header-carousel-item bg-cover" style="background-image:url('+anime.image+')">'+
+        '<div class="carousel-caption d-none d-md-block carousel-background">'+
+        '<a href="/anime/'+anime.aid+'"><h5>'+anime.name+'</h5></a>'+
+        '</div></div>';
+      });
+
+    }
+
+
+  }
+
+    $('.ui.dropdown')  //找到 class 是 ui.dropdown  71 行
+    .dropdown();
+</script>
+</body>
+
+</html>

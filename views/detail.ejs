@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0"><!--为了移动端而做准备-->
+    <title><%=animes.name%></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="/static/css/me.css">
+</head>
+
+<body>
+<nav class="ui inverted attached segment m-padded-tb-mini"> <!--inverted 使得 底色变黑 ，反色 attach 没有圆角 附着圆滑-->
+    <!--里面 m-padded-tb-mini 让nav bar的宽度小一点 全是配合那个css me 自己加的-->
+    <div class="ui container"><!---解决第一个logo太靠左边界的问题-->
+        <div class="ui  inverted  secondary menu">
+            <h2 class="ui orange header item">Anime</h2> <!--加了item 才能加下面的分栏目-->
+            <a href="/itemcf" class="item"><i class="home icon"></i>Homepage</a>
+
+            <div class="right item">
+                <div class="ui icon input"> <!--这里不加 icon 你的 icon 就出不来-->
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i> <!--加 link 使得 你把鼠标放到哪个放大镜上 会变成手（像一个链接一样）-->
+                </div>
+
+
+                <div class="item m-margin">
+                    <a href="/signout">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="ui container">
+    <div class="ui top attached segment m-margin-top">
+        <div class="ui grid">
+            <div class="six wide column">
+                <div class="ui top attached secondary segment m-margin">
+                  <h2 class = "m-text-large">Anime Information</h2>
+                </div>
+                <div class="ui attached orange segment m-margin">
+                      <h4 class = "m-inline-block">Anime Name:</h4>
+                      <!-- ============= -->
+                      <!-- better to make it go to wiki page  -->
+                      <!-- ============= -->
+                      <a href="" class = "item m-margin-left-mini">
+                          <%=animes.name%>
+                      </a>
+                </div>
+                <div class="ui attached orange segment m-margin">
+                    <h4 class = "m-inline-block">Anime Genre:</h4>
+                    <!-- ========= -->
+                    <!-- better to show the list of anime based on this genre -->
+                    <!-- ========= -->
+                    <a href="" class = "item m-margin-left-mini">
+                        <%=animes.genre%>
+                    </a>
+
+                </div>
+                <div class="ui attached orange segment m-margin">
+                    <h4 class = "m-inline-block">Anime Type:</h4>
+                    <a href="" class = "item m-margin-left-mini">
+                        <%=animes.type%>
+                    </a>
+                </div>
+                <div class="ui attached orange segment m-margin">
+                    <h4 class = "m-inline-block">Anime Episode:</h4>
+                    <a href="" class = "item m-margin-left-mini">
+                        Episode Type: <%=animes.duration%>
+                    </a>
+                </div>
+                <div class="ui attached orange segment m-margin">
+                    <h4 class = "m-inline-block">Anime Ave-Rating:</h4>
+                    <a href="" class = "item m-margin-left-mini">
+                        <%=animes.rating%> / 10
+                    </a>
+                </div>
+                <div class="ui attached orange segment m-margin">
+                    <h4 class = "m-inline-block">Total Members in Forum:</h4>
+                    <a href="" class = "item m-margin-left-mini">
+                        <%=animes.members%>
+                    </a>
+                </div>
+                <div class="ui bottom attached orange segment m-margin">
+                    <h4 class = "m-inline-block">Description:</h4>
+                    <!-- <a href="" class = "item m-margin-left-mini"> -->
+                    <%=description%>
+                    <!-- </a> -->
+                </div>
+
+            </div>
+
+            <!-- ====== -->
+            <!-- potential add youtube api  -->
+            <!-- ====== -->
+            <div class="ten wide column">
+                <img src="<%=animes.image%>" alt="image not found" class="ui rounded image" style="width:640px; height:390px" />
+                <!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+                <br/>
+                <div id="player"></div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <!-- rating part -->
+    <div class="ui inverted attached segment m-margin-bot">
+        <div class="ui container">
+            <h3 class = "m-inline-block m-text-large">Rating :</h3>
+            <form action="/saverating/<%=animes.aid%>" method="POST" >
+            <div class="ui buttons m-padded-left-mini">
+                <input type="hidden" name="rated" value="<%=rated%>" />
+                <div>
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button" value="1" id="button1" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button" value="2" id="button2" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button" value="3" id="button3" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button" value="4" id="button4" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button" value="5" id="button5" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button " value="6" id="button6" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button" value="7" id="button7" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button" value="8" id="button8" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button " value="9" id="button9" />
+                <input type="text" onclick="changeValue(this)" name="" class="ui inverted orange button " value="10" id="button10" />
+              </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="submit">
+                <button class="ui green button inverted" type="submit">Submit Your Rating Review</button>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="ui inverted vertical segment m-padded-tb-mid">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://media.giphy.com/media/5ArXi4OrKgfSM/giphy.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://pa1.narvii.com/5828/f036dc936d64ecd9e6dac043824292622aeb700d_hq.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://i.imgur.com/iSMhUIh.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://www.vstou.com/upload/image/1/201608/1470721863551355.jpg" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider ">
+            <p>
+            <div class="copyright m-text-thin m-text-spaced m-opacity-mini">
+                Copyright @ 2018-2019 Adaptive System Design Designed by Group Pokemon
+            </div>
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script>
+
+var aid = '<%=animes.aid%>';
+var rated = '<%=rated%>';
+console.log('this is the app...'+aid);
+//to check if the user has rated this anime.
+if (rated.length != 0){
+  console.log('user has rated this anime.');
+  document.getElementById(rated).onclick();
+}
+
+function changeValue(elmnt){
+
+  console.log(elmnt.parentElement.children);
+  if (elmnt.name!=""){
+    elmnt.name = "";
+    Array.from(elmnt.parentElement.children).forEach( (buttonEle)=>{
+            buttonEle.disabled = false;
+        });
+  }else{
+    console.log('!!!');
+    elmnt.name="selected";
+    Array.from(elmnt.parentElement.children).forEach( (buttonEle)=>{
+          if (buttonEle.name != elmnt.name){
+            buttonEle.disabled = true;
+          }
+
+    });
+    console.log('the name is '+elmnt.name);
+  }
+}
+
+// 2. This code loads the IFrame Player API code asynchronously.
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads. 390 h
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: '<%=youtubeid%>',
+    events: {
+      'onReady': onPlayerReady,
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+// 4. The API will call this function when the video player is ready.
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+// 5. The API calls this function when the player's state changes.
+//    The function indicates that when playing a video (state=1),
+//    the player should play for six seconds and then stop.
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(stopVideo, 6000);
+    done = true;
+  }
+}
+function stopVideo() {
+  player.stopVideo();
+}
+
+</script>
+<!--一个jquery 是从jsDeliver这个网站中引入的-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script>
+</body>
+</html>

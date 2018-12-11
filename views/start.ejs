@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0"><!--为了移动端而做准备-->
+    <title>Start Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
+    <link rel="stylesheet" href="./static/css/me.css">
+    <style type="text/css">
+        .orangeborder{
+            border:3px solid orange;
+        }
+        .orangetext{
+            color: orange;
+        }
+        /****
+           打分的orange    #f2711c
+        **/
+       .mini.ui.inverted.orange.button.orangebackground{
+            background-color: orange;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="ui inverted attached segment m-padded-tb-mini m-container"> <!--inverted 使得 底色变黑 ，反色 attach 没有圆角 附着圆滑-->
+    <!--里面 m-padded-tb-mini 让nav bar的宽度小一点 全是配合那个css me 自己加的-->
+    <div class="ui container"><!---解决第一个logo太靠左边界的问题-->
+        <div class="ui  inverted  secondary menu">
+            <h2 class="ui orange header item">Anime</h2> <!--加了item 才能加下面的分栏目-->
+            <a href="/itemcf" class="item"><i class="home icon"></i>Homepage</a>
+            <div class="right item">
+                <div class="ui icon input"> <!--这里不加 icon 你的 icon 就出不来-->
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i> <!--加 link 使得 你把鼠标放到哪个放大镜上 会变成手（像一个链接一样）-->
+                </div>
+                <div class="item m-margin" id="signout">
+                    <a href="/signout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="ui container">
+    <form action='/start' method='post'>
+    <div class="ui segment m-margin-top">
+        <h3 class="m-text-large m-padded-left-small">Please Select Three Genres:</h3>
+        <div class="ui grid">
+            <div class="three wide column" >
+                <a href="javascript:;" >
+                    <img src="https://media1.tenor.com/images/deaa81f477db319c2a0fa8fe14dbc10f/tenor.gif?itemid=8075693" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px;" data-index="0">
+                </a>
+            </div>
+            <div class="three wide column"><a href="javascript:;">
+                <img src="https://media1.tenor.com/images/ef8053b05977971d1b754469b1921827/tenor.gif?itemid=4707073" alt="" class="ui rounded image m-margin-left-mini selclass"
+                     style="width:250px; height:200px" data-index="1">
+            </a>
+            </div>
+            <div class="three wide column">
+                <a href="javascript:;">
+                    <img src="http://66.media.tumblr.com/536d4cb6524a11636b08d9cedd536eda/tumblr_mn6da45EhN1s56d0to2_250.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px" data-index="2">
+                </a>
+            </div>
+            <div class="three wide column">
+                <a href="javascript:;">
+                    <img src="https://media.giphy.com/media/AeqS5DZ27VkmQ/giphy.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px" data-index="3">
+                </a>
+            </div>
+            <div class="three wide column">
+                <a href="javascript:;">
+                    <img src="https://data.whicdn.com/images/58831079/original.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px" data-index="4">
+                </a>
+            </div>
+        </div>
+
+        <div class="ui grid">
+            <div class="three wide column m-margin-left-tiny">
+                <h4 class="selclass1">Comedy</h4>
+                <input class="genres" type="hidden" name="" value="Comedy"/>
+            </div>
+            <div class="three wide column">
+                <h4 class="selclass1">Action</h4>
+                <input class="genres" type="hidden" name="" value="Action"/>
+            </div>
+            <div class="three wide column">
+                <h4 class="selclass1">Adventure</h4>
+                <input class="genres" type="hidden" name="" value="Adventure"/>
+            </div>
+            <div class="three wide column">
+                <h4 class="selclass1">Fantasy</h4>
+                <input class="genres" type="hidden" name="" value="Fantasy"/>
+            </div>
+            <div class="Four wide column">
+                <h4 class="selclass1">Supernatural</h4>
+                <input class="genres" type="hidden" name="" value="Supernatural"/>
+            </div>
+        </div>
+
+
+        <div class="ui grid">
+            <div class="three wide column">
+                <a href="javascript:;">
+                    <img src="http://digitalspyuk.cdnds.net/17/30/768x384/landscape-1500895599-pokemon-psyduck.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px" data-index="5">
+                </a>
+            </div>
+            <div class="three wide column">
+                <a href="javascript:;">
+                <img src="https://i.gifer.com/Bfxb.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                     style="width:250px; height:200px" data-index="6">
+            </a>
+            </div>
+            <div class="three wide column">
+                <a href="javascript:;">
+                    <img src="https://media.giphy.com/media/lr536FXjvukAo/giphy.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px" data-index="7">
+                </a>
+            </div>
+            <div class="three wide column">
+                <a href="javascript:;">
+                    <img src="https://media.giphy.com/media/8tpiC1JAYVMFq/giphy.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px" data-index="8">
+                </a>
+            </div>
+            <div class="three wide column">
+                <a href="javascript:;">
+                    <img src="https://media.giphy.com/media/k7SZLGTPmEEN2/giphy.gif" alt="" class="ui rounded image m-margin-left-mini selclass"
+                         style="width:250px; height:200px" data-index="9">
+                </a>
+            </div>
+
+
+        </div>
+        <div class="ui grid">
+            <div class="three wide column m-margin-left-tiny">
+                <h4 class="selclass1">Drama</h4>
+                <input class="genres" type="hidden" name="" value="Drama"/>
+            </div>
+            <div class="three wide column">
+                <h4 class="selclass1">Shounen</h4>
+                <input class="genres" type="hidden" name="" value="Shounen"/>
+            </div>
+            <div class="three wide column">
+                <h4 class="selclass1">Kids</h4>
+                <input class="genres" type="hidden" name="" value="Kids"/>
+            </div>
+            <div class="three wide column">
+                <h4 class="selclass1">Romance</h4>
+                <input class="genres" type="hidden" name="" value="Romance"/>
+            </div>
+            <div class="Four wide column">
+                <h4 class="selclass1">School</h4>
+                <input class="genres" type="hidden" name="" value="School"/>
+            </div>
+        </div>
+        <div class="ui grid m-padded-left-both">
+            <div class="sixteen wide column">
+                <!--这是content 部分的header 在这里 要分成 左右两边 来实现 但 content 左边从第二行开始 就是一个 card 原件-->
+                <div class="ui top attached segment">
+                    <div class="ui middle aligned two column grid">
+                        <!--注意第一行的格式是 左右 左边是 博客 右边是共多少篇 注意这个class 里 two column 这个属性 此外 middle aligned 使得字出现在 Segment的中间位置-->
+                        <div class="column"> <!-- 第一列 也就是左边-->
+                            <h3 class="ui m-text-large ">Rating Animes</h3>
+                        </div>
+                        <div class="right aligned column"> <!--第二列 也就是右边 注意要右边对其（使其到右边）-->
+                            We find <h2 class="ui orange header m-inline-block m-text-thin">10</h2> results for you
+                            <!--这里要讲一个特别重要的事 就是 如果不加m-inline-block 那么因为h3 是一个block 属性-->
+                            <!--所谓的block属性 就是 他要单独占一行 但是加入那个属性之后 他就可以和别人出现在一行 注意此属性也要自己设定-->
+
+                        </div>
+                    </div>
+                </div> <!--就是左边的分片,类似于一个大框包着所有的内容 按照他的意思 这个大框实际只包含了 content 左边部分的第一行-->
+
+
+                <div class="ui attached segment" id="segment22"> <!--m-padding这一句让每一个卡片间距变大一点 不要太密-->
+                    <% animes.forEach( (anime,index)=>{ %>
+                    <div class="ui padded vertical segment m-padded-tb-tiny">
+                        <!--卡片部分里面还要细分segment 这是一个 要点 你看原始的模板 就是分开的 这可以说是第一个卡片-->
+                        <!--为了让板式更好像模板 实际 你要这么写才不会跑版-->
+                        <!--首先 class 加 padded 使得 里面的内容离这个 segment 框 远一点-->
+                        <!--加一句vertical 使得 首先 那个 segment不在了 之后 你在 粘贴新的卡片过来，两个卡片之间还会自动帮你做出一个分割线-->
+                        <div class="ui grid"> <!--为什么不写 two column grid 因为那是均分-->
+                            <div class="eight wide column">
+                                <h3 class="ui header"><%=anime["name"] %></h3>
+                                <p class="m-text"><%=animeDescription[index]%></p>
+
+
+                            </div>
+
+                            <div class="eight wide column"><!--用来放图 注意 图片要是可以点击的链接式的 所以要用a-->
+                                <a href="/anime/<%=anime.aid%>" target="_blank">
+                                    <img src="<%=anime.image%>" alt="image not found" class="ui rounded image"
+                                         style="width:450px; height:350px">
+                                    <!--round 属性让图片以圆角的方式展开-->
+                                    <!--这里图片选用unsplash.it网站上的-->
+
+                                </a>
+                            </div>
+                            <div class="item m-padded-tb-bot">
+                                <h3 class="m-inline-block m-text-large m-margin-left-mini">Your Rating :</h3>
+                                <div class="ui buttons m-padded-left-mini">
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="1" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="2" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="3" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="4" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="5" readonly/>
+                                  </div>
+                                  <div class="ui buttons m-padded-left-mini">
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="6" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="7" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="8" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="9" readonly/>
+                                    <input type="text" name="" onclick="changeName(this,<%=anime.aid%>)" class="mini ui inverted orange button" value="10" readonly/>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--m-padding这一句让每一个卡片间距变大一点 不要太密-->
+                    <% }); %>
+                    <!--  -->
+                </div>
+
+                <div class="ui bottom attached segment m-margin-bot"><!--所有他实际上是由三部分组成的 这个是底部 负责上下翻页 由 左右组成-->
+                    <div class="ui middle aligned two column grid">
+                        <div class="column">
+                            <a href="#" class="teal ui basic button">Previous</a>
+                        </div>
+
+                        <div class="right aligned column">
+                            <input type="submit" class="teal ui basic button" value="Confirm"> <!--写了 basic button 会变成没有填充的-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+  </form>
+</div>
+
+
+
+<footer class="ui inverted vertical segment m-padded-tb-mid">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://media.giphy.com/media/5ArXi4OrKgfSM/giphy.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://pa1.narvii.com/5828/f036dc936d64ecd9e6dac043824292622aeb700d_hq.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://i.imgur.com/iSMhUIh.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://www.vstou.com/upload/image/1/201608/1470721863551355.jpg" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider ">
+            <p>
+            <div class="copyright m-text-thin m-text-spaced m-opacity-mini">
+                Copyright @ 2018-2019 Adaptive System Design Designed by Group Pokemon
+            </div>
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<!--一个jquery 是从jsDeliver这个网站中引入的-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script>
+<script type="text/javascript">
+    //分类选择   s所有的java script 部分 从 detail 2 也就是 两分治 开始
+    ;(function($,doc){               //此句的意义 在于 每一次 刷新 这个 页面的时候 都会调用这个方法
+         var maxlength = 3;              //此两句的意义 在于 要为 之后 选择 三个 只能 选三个 服务
+         var count =0;
+    $("img.selclass").on("click",function(){     // 一开始 所有 的 图（10个 genre ） 都是 可选的 都 有一个 selclass 的 class  所有 带着 这个 selclass 的 image 我们 只要一点击
+        var index = $(this).attr("data-index");    //搞了一个 index  $(this) this 就是 前面的 img.selclass(也就是 你点击的)  定义一个变量 就是 你所点击的 这个 图片的data-index（前端已经订好)
+         if($(this).attr("class") == "ui rounded image m-margin-left-mini selclass"){           //也就是 只要没有选中的 选中的会有 class = "orangeborder"
+            if(count<maxlength){                             // 查验数量 成立 则 继续
+               $(this).addClass("orangeborder");           //制作 orange border
+               $(".selclass1").eq(index).addClass("orangetext");        // 所有的selclass1 也就是 下方的 字  对应 index (你选的)
+               count++;
+               $(".genres").eq(index)['0'].name = "genre"+count;
+               console.log($(".genres").eq(index)['0'].name);
+
+            }
+         }else if($(this).attr("class") == "ui rounded image m-margin-left-mini selclass orangeborder"){
+            if(count>0){
+                 $(this).removeClass("orangeborder");
+                 $(".selclass1").eq(index).removeClass("orangetext");
+               count--;
+               $(".genres").eq(index)['0'].name = "";
+            }
+         }
+    });
+    }(jQuery,document));   //jquery 这一句 就是 规范 带着 没有 意义 需要探讨
+
+    function changeName(elmnt,aid){
+      console.log(elmnt.parentElement.children);
+      if (elmnt.name!=""){
+        elmnt.name = "";
+        Array.from(elmnt.parentElement.parentElement.children).forEach( (divEle)=>{
+          if (divEle.children){
+            Array.from(divEle.children).forEach( (inputEle)=>{
+                inputEle.disabled = false;
+            });
+          }
+        });
+
+      }else{
+        elmnt.name="rating"+aid;
+        Array.from(elmnt.parentElement.parentElement.children).forEach( (divEle)=>{
+          if (divEle.children){
+            Array.from(divEle.children).forEach( (inputEle)=>{
+              if (inputEle.name != elmnt.name){
+                inputEle.disabled = true;
+              }
+            });
+          }
+        });
+      }
+    }
+
+    //请求数据结果
+    function getNewsList(){
+        $.ajax({
+        type:"get",
+        url:"./static/product.json",
+        data:{},
+        //dataType:"json",
+        success:function(res){
+            console.log(res);
+            //清空当前节点
+            $("#segment22").html("");
+            for(var i=0;i<res.length;i++){                         // #segment 22  是 卡片 组这部分 我给整个加的一个 id  所以 用一个for 循环 把 一个个 卡片  用    ！拼！ 的方法 从 jason 中 拿出来
+                $("#segment22").append(' <div class="ui padded vertical segment m-padded-tb-tiny">'+
+                        '<div class="ui grid"> '+
+                           ' <div class="eight wide column">'+
+                               ' <h3 class="ui header">'+res[i]["title"]+'</h3>'+
+                               ' <p class="m-text">'+
+                               res[i]["content"]+
+                             '      </p>'+
+                            '</div>'+
+                           ' <div class="eight wide column">'+
+                               ' <a href="#" target="_blank">'+
+                                   ' <img src="'+res[i]["picurl"]+'" alt="" class="ui rounded image"'+
+                                       '  style="width:450px; height:350px">'+
+                                '</a>'+
+                           ' </div>'+
+                           ' <div class="item m-padded-tb-bot">'+
+                               ' <h3 class="m-inline-block m-text-large m-margin-left-mini">Your Rating :</h3>'+
+                               ' <div class="ui buttons m-padded-left-mini m123">'+
+                                   ' <button class="mini ui inverted orange button">One</button>'+
+                                   ' <button class="mini ui inverted orange button">Two</button>'+
+                                    '<button class="mini ui inverted orange button ">Three</button>'+
+                                    '<button class="mini ui inverted orange button">Four</button><button class="mini ui inverted orange button">Five</button>'+
+                                   ' <button class="mini ui inverted orange button ">Six</button>'+
+                                   ' <button class="mini ui inverted orange button">Seven</button>'+
+                                   ' <button class="mini ui inverted orange button">Eight</button><button class="mini ui inverted orange button ">Nine</button>                                  <button class="mini ui inverted orange button ">Ten</button></div></div>'+
+                        '</div>'+
+                    '</div>');
+
+            }
+
+            //做个循环专门设置每个dom的颜色值
+            for(var j=0;j<res.length;j++){                     // result  就是 10 个 我做的 来自 jason 文件的假数据 ， 将来 将会替换成 利用 spring boot 从 data base 中 读出来的 东西
+               var btn =$("#segment22").find(".m123").eq(j).find("button");  // 这句 eq(j) 我就是 为了知道 现在 这是 第几个打分  可以把 j 理解为 jason 中的 第几个数据（数据的ID）, 这一句是定位到这个button 组（btn 表示）
+               for(var m = 0;m<btn.length;m++){            //遍历 这个 button 组合 ，
+                  if(btn.eq(m).text() == res[j]["Fraction"]){          //button 组上的text  = Jason中 假的打分的时候 ， 我们 会 btn.eq(m)  就像是 一个 btn数组 btn[m] 注意 JavaScript的表达方式
+                     btn.eq(m).attr("class","mini ui inverted orange button orangebackground");         // 给他加入 橘色 background   .attr 的使用方法
+
+                  }
+               }
+            }
+
+
+        },  // 所有 success的 都在这里 ， 注意 结尾的 逗号
+        error:function(res){
+          //  console.log(res);
+        }
+        });
+    }
+    getNewsList();
+
+
+</script>
+</body>
+</html>

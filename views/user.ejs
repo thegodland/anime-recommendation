@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = device-width, initial-scale = 1.0"><!--为了移动端而做准备-->
+    <title><%=user.username%></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.css">
+    <!-- <link rel="stylesheet" href="/static/css/me.css"> -->
+</head>
+<body>
+
+
+<nav class="ui inverted attached segment m-padded-tb-mini m-container"> <!--inverted 使得 底色变黑 ，反色 attach 没有圆角 附着圆滑-->
+    <!--里面 m-padded-tb-mini 让nav bar的宽度小一点 全是配合那个css me 自己加的-->
+    <div class="ui container"><!---解决第一个logo太靠左边界的问题-->
+        <div class="ui  inverted  secondary menu">
+            <h2 class="ui orange header item">Anime</h2> <!--加了item 才能加下面的分栏目-->
+            <a href="/itemcf" class="item"><i class="home icon"></i>Homepage</a>
+
+            <div class="right item">
+                <div class="ui icon input"> <!--这里不加 icon 你的 icon 就出不来-->
+                    <input type="text" placeholder="Search....">
+                    <i class="search link icon"></i> <!--加 link 使得 你把鼠标放到哪个放大镜上 会变成手（像一个链接一样）-->
+                </div>
+                <!-- to sign out -->
+                <div class="item m-margin" id="signout">
+                    <a href="/signout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="ui m-container">
+    <div class="ui container">
+        <div class="ui segment m-margin-top m-margin-bot">
+            <div class="ui grid">
+                <div class="six wide column">
+                    <h3 class="m-text-large  m-margin-left-mid m-margin-bot-massive">Username : </h3>
+                    <h3 class="m-text-large  m-margin-left-mid m-margin-bot-large ">Top Three Genres : </h3>
+                </div>
+                <div class="ten wide colmn">
+                    <div class="field">
+
+                        <h3 class="m-margin-left-mid m-margin-top m-margin-bot-large">Hi, <%=user.username%></h3>
+                        <form action="/user/<%=user.uid%>" method="POST">
+
+                          <div class="image m-margin-top">
+                              <img src="" class = "m-margin-left-mini" alt="" style = "width:150px; height:150px">
+                              <img src="" class = "m-margin-left-mini" alt="" style = "width:150px; height:150px">
+                              <img src="" class = "m-margin-left-mini" alt="" style = "width:150px; height:150px">
+                          </div>
+                          <div>
+                            <!-- genre drop box -->
+
+
+                            <select id="genrelist" maxSelections=3 name="genre" multiple="3" size="10" style="height:150px;" class="ui fluid dropdown">
+
+                              <option value="Comedy">Comedy</option>
+                              <option value="Action">Action</option>
+                              <option value="Adventure">Adventure</option>
+                              <option value="Fantasy">Fantasy</option>
+                              <option value="Supernatural">Supernatural</option>
+                              <option value="Drama">Drama</option>
+                              <option value="Shounen">Shounen</option>
+                              <option value="Kids">Kids</option>
+                              <option value="Romance">Romance</option>
+                              <option value="School">School</option>
+                            </select>
+
+                          </div>
+                          <div class="button m-margin-top-large ">
+                              <button class="ui teal large button  m-margin-left-massive  m-inline-block" type="submit">Confirm</button>
+                              <button onclick="document.location.reload(true);" class="ui orange large basic button  m-margin-left-tiny2 m-inline-block" type="button">Cancel</button>
+                          </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+
+<footer class="ui inverted vertical segment m-padded-tb-mid">
+    <div class="ui center aligned container">
+        <div class="ui inverted divided grid">
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://media.giphy.com/media/5ArXi4OrKgfSM/giphy.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://pa1.narvii.com/5828/f036dc936d64ecd9e6dac043824292622aeb700d_hq.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="https://i.imgur.com/iSMhUIh.gif" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+            <div class="four wide column">
+                <div class="ui inverted link list">
+                    <div class="item">
+                        <img src="http://www.vstou.com/upload/image/1/201608/1470721863551355.jpg" class="ui rounded image"
+                             alt="This image cant not be showed" style="width: 150px; height: 150px">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ui inverted section divider ">
+            <p>
+            <div class="copyright m-text-thin m-text-spaced m-opacity-mini">
+                Copyright @ 2018-2019 Adaptive System Design Designed by Group Pokemon
+            </div>
+            </p>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+<script>
+// console.log('<%=user.genre1%>');
+var optionele = document.getElementById('genrelist').children;
+//when load to make sure change the
+for (var optele of optionele){
+  if (optele.value == '<%=user.genre1%>' || optele.value=='<%=user.genre2%>' || optele.value=='<%=user.genre3%>' ){
+    console.log('<%=user.genre1%>');
+    optele.setAttribute("selected", "selected");
+  }
+}
+updateImg();
+
+//function to update img
+function updateImg(){
+  var imageMatching = {
+    Comedy:'https://media1.tenor.com/images/deaa81f477db319c2a0fa8fe14dbc10f/tenor.gif?itemid=8075693',
+    Action: 'https://media1.tenor.com/images/ef8053b05977971d1b754469b1921827/tenor.gif?itemid=4707073',
+    Adventure:'http://66.media.tumblr.com/536d4cb6524a11636b08d9cedd536eda/tumblr_mn6da45EhN1s56d0to2_250.gif',
+    Fantasy:'https://media.giphy.com/media/AeqS5DZ27VkmQ/giphy.gif',
+    Supernatural:'https://data.whicdn.com/images/58831079/original.gif',
+    Drama:'http://digitalspyuk.cdnds.net/17/30/768x384/landscape-1500895599-pokemon-psyduck.gif',
+    Shounen:'https://i.gifer.com/Bfxb.gif',
+    Kids:'https://media.giphy.com/media/lr536FXjvukAo/giphy.gif',
+    Romance:'https://media.giphy.com/media/8tpiC1JAYVMFq/giphy.gif',
+    School:'https://media.giphy.com/media/k7SZLGTPmEEN2/giphy.gif'
+  }
+  //get all three genre selected value and update url
+  var genres = [];
+  let selectedlist = document.querySelectorAll('option:checked');
+  for (var opt of selectedlist){
+    genres.push(opt.value);
+  }
+  let imgele = document.querySelectorAll('.m-margin-left-mini');
+  for (let [index,singleimg] of imgele.entries()){
+
+    let urladd = imageMatching[genres[index]];
+    singleimg.setAttribute('src',urladd);
+  }
+}
+
+//make sure only can select three genres.
+var verified = [];
+document.querySelector('select').onchange = function(e) {
+  if (this.querySelectorAll('option:checked').length <= 3) {
+      verified = Array.apply(null, this.querySelectorAll('option:checked'));
+  } else {
+    Array.apply(null, this.querySelectorAll('option')).forEach(function(e) {
+        e.selected = verified.indexOf(e) > -1;
+    });
+  }
+  updateImg();
+}
+
+//for cancel the ctrl to choose dropbox
+// window.onmousedown = function (e) {
+//     var el = e.target;
+//     if (el.tagName.toLowerCase() == 'option' && el.parentNode.hasAttribute('multiple')) {
+//         e.preventDefault();
+//
+//         // toggle selection
+//         if (el.hasAttribute('selected')) el.removeAttribute('selected');
+//         else el.setAttribute('selected', '');
+//
+//         // hack to correct buggy behavior
+//         var select = el.parentNode.cloneNode(true);
+//         el.parentNode.parentNode.replaceChild(select, el.parentNode);
+//     }
+// }
+// drop box change then change image
+// drop box load can
+</script>
+<!--一个jquery 是从jsDeliver这个网站中引入的-->
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.0/dist/semantic.min.js"></script>
+</body>
+</html>
